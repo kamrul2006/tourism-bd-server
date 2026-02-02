@@ -44,6 +44,7 @@ async function run() {
         const BlogCollection = client.db("Tourism-BD-Server").collection('Blogs')
         const UserCollection = client.db("Tourism-BD-Server").collection('UsersList')
         const ReviewsCollection = client.db("Tourism-BD-Server").collection('ReviewsList')
+        const DestinationsCollection = client.db("Tourism-BD-Server").collection('DestinationsList')
 
 
         // ----------------------------------------------------------------------------------------
@@ -189,6 +190,27 @@ async function run() {
         //         res.status(500).json({ message: "Failed to delete user", error: err.message });
         //     }
         // });
+
+
+
+        // ------------------------------------------------------------------
+        // -------------Destinations---------
+        // ------------------------------------------------------------------
+
+        //----------add Destinations--------
+        app.post('/destinations', async (req, res) => {
+            const review = req.body
+            const result = await DestinationsCollection.insertOne(review)
+            res.send(result)
+        })
+
+
+        // -----------get all Destinations---------------------------------
+        app.get("/destinations", async (req, res) => {
+            const result = await DestinationsCollection.find().toArray();
+            res.send(result)
+        })
+
 
 
         //--------------------------------------------------------------------

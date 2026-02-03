@@ -58,6 +58,7 @@ async function run() {
             res.send(result)
         })
 
+
         // ----------------------get blog by id -----------------------------
         app.get("/Blogs/:id", async (req, res) => {
             const id = req.params.id
@@ -66,6 +67,7 @@ async function run() {
             const result = await BlogCollection.findOne(query)
             res.send(result)
         })
+
 
         //----------add Blog--------
         app.post('/Blogs', async (req, res) => {

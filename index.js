@@ -225,14 +225,12 @@ async function run() {
             res.send(result)
         })
 
-
         //----------add review--------
         app.post('/reviews', async (req, res) => {
             const review = req.body
             const result = await ReviewsCollection.insertOne(review)
             res.send(result)
         })
-
 
         // ------------- approve review---------------
         app.patch('/reviews/approve/:id', async (req, res) => {

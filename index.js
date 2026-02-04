@@ -15,6 +15,9 @@ app.use(cors(
         origin: [
             'http://localhost:5173',
             'http://localhost:5173',
+            'https://tourismbd-by-k-web-tech.firebaseapp.com',
+            'https://tourismbd-by-k-web-tech.web.app'
+
         ],
         methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
         allowedHeaders: ['Content-Type', 'Authorization'],

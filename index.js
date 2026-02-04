@@ -8,7 +8,6 @@ const port = process.env.PORT || 5000
 
 const app = express();
 
-
 // -----------middleware-----
 app.use(cors(
     {
@@ -72,7 +71,7 @@ async function run() {
         })
 
 
-        //----------add Blog--------
+        //----------add Blog------------------
         app.post('/Blogs', async (req, res) => {
             const review = req.body
             const result = await BlogCollection.insertOne(review)
@@ -197,7 +196,6 @@ async function run() {
         // });
 
 
-
         // ------------------------------------------------------------------
         // -------------Destinations---------
         // ------------------------------------------------------------------
@@ -236,34 +234,34 @@ async function run() {
         })
 
         // ------------- approve review---------------
-        app.patch('/reviews/approve/:id', async (req, res) => {
-            const id = req.params.id;
-            try {
-                const result = await ReviewsCollection.updateOne(
-                    { _id: new ObjectId(id) },
-                    { $set: { status: 'approved' } }
-                );
-                res.send(result);
-            } catch (error) {
-                res.status(500).send({ message: 'Failed to approve article' });
-            }
-        });
+        // app.patch('/reviews/approve/:id', async (req, res) => {
+        //     const id = req.params.id;
+        //     try {
+        //         const result = await ReviewsCollection.updateOne(
+        //             { _id: new ObjectId(id) },
+        //             { $set: { status: 'approved' } }
+        //         );
+        //         res.send(result);
+        //     } catch (error) {
+        //         res.status(500).send({ message: 'Failed to approve article' });
+        //     }
+        // });
 
         //---------- DELETE review by id----------------
-        app.delete("/Reviews/:id", async (req, res) => {
-            const { id } = req.params;
-            try {
-                const result = await ReviewsCollection.deleteOne({ _id: new ObjectId(id) });
-                if (result.deletedCount === 1) {
-                    res.status(200).json({ message: "Review deleted successfully." });
-                } else {
-                    res.status(404).json({ message: "Review not found." });
-                }
-            } catch (err) {
-                console.error("Delete Error:", err);
-                res.status(500).json({ message: "Server error." });
-            }
-        });
+        // app.delete("/Reviews/:id", async (req, res) => {
+        //     const { id } = req.params;
+        //     try {
+        //         const result = await ReviewsCollection.deleteOne({ _id: new ObjectId(id) });
+        //         if (result.deletedCount === 1) {
+        //             res.status(200).json({ message: "Review deleted successfully." });
+        //         } else {
+        //             res.status(404).json({ message: "Review not found." });
+        //         }
+        //     } catch (err) {
+        //         console.error("Delete Error:", err);
+        //         res.status(500).json({ message: "Server error." });
+        //     }
+        // });
 
     }
     finally {

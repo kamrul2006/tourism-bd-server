@@ -273,7 +273,6 @@ async function run() {
             res.send(result)
         })
 
-
         // ----------------------get blog by id -----------------------------
         app.get("/plans/:id", async (req, res) => {
             const id = req.params.id
@@ -282,7 +281,6 @@ async function run() {
             const result = await PlansCollection.findOne(query)
             res.send(result)
         })
-
 
         //----------add plane------------------
         app.post('/plans', async (req, res) => {
@@ -296,7 +294,6 @@ async function run() {
     }
 }
 run().catch(console.dir);
-
 
 
 app.get('/', (req, res) => {

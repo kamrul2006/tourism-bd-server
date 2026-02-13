@@ -44,6 +44,7 @@ async function run() {
         const UserCollection = client.db("Tourism-BD-Server").collection('UsersList')
         const ReviewsCollection = client.db("Tourism-BD-Server").collection('ReviewsList')
         const DestinationsCollection = client.db("Tourism-BD-Server").collection('DestinationsList')
+        const PlansCollection = client.db("Tourism-BD-Server").collection('AllPlansList')
 
 
         // ----------------------------------------------------------------------------------------
@@ -259,6 +260,36 @@ async function run() {
         //         res.status(500).json({ message: "Server error." });
         //     }
         // });
+
+
+        // ----------------------------------------------------------------------------------------
+        //------all Blogs ---------
+        // ----------------------------------------------------------------------------------------
+
+
+        // ---------------get all Blogs----------------
+        app.get("/plans", async (req, res) => {
+            const result = await PlansCollection.find().toArray();
+            res.send(result)
+        })
+
+
+        // ----------------------get blog by id -----------------------------
+        app.get("/plans/:id", async (req, res) => {
+            const id = req.params.id
+            const query = { _id: new ObjectId(id) }
+
+            const result = await PlansCollection.findOne(query)
+            res.send(result)
+        })
+
+
+        //----------add plane------------------
+        app.post('/plans', async (req, res) => {
+            const review = req.body
+            const result = await PlansCollection.insertOne(review)
+            res.send(result)
+        })
 
     }
     finally {

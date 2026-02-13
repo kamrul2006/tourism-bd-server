@@ -199,12 +199,12 @@ Tourism-BD-Server
 
 # 🧠 Features
 
-✔ Modern REST API structure
-✔ MongoDB Atlas cloud integration
-✔ Admin role system
-✔ Travel Plan Invoice storage
-✔ Secure CORS configuration
-✔ Clean, scalable architecture
+* ✔ Modern REST API structure
+* ✔ MongoDB Atlas cloud integration
+* ✔ Admin role system
+* ✔ Travel Plan Invoice storage
+* ✔ Secure CORS configuration
+* ✔ Clean, scalable architecture
 
 ---
 
@@ -225,9 +225,9 @@ Tourism-BD-Server
 Frontend Web Developer
 Bangladesh 🇧🇩
 
-🌐 Portfolio Project: TourismBD
-📧 Email: <kamrulislamapurba@gmail.com>
-💼 Specialization: React, Tailwind, Firebase, Node.js, MongoDB
+* 🌐 Portfolio Project: TourismBD
+* 📧 Email: <kamrulislamapurba@gmail.com>
+* 💼 Specialization: React, Tailwind, Firebase, Node.js, MongoDB
 
 ---
 

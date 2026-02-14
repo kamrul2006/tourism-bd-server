@@ -180,7 +180,6 @@ async function run() {
             }
         });
 
-
         // ----------------- DELETE a user---------------
         app.delete("/Users/:id", async (req, res) => {
             const userId = req.params.id;
@@ -190,6 +189,35 @@ async function run() {
                 res.json(result);
             } catch (err) {
                 res.status(500).json({ message: "Failed to delete user", error: err.message });
+            }
+        });
+
+        // ----------------user info update-----
+        app.put("/users/:email", async (req, res) => {
+            const email = req.params.email;
+            const updatedData = req.body;
+
+            try {
+                const filter = { email: email };
+                const updateDoc = {
+                    $set: {
+                        name: updatedData.name,
+                        address: updatedData.address,
+                        dob: updatedData.dob,
+                    },
+                };
+
+                const result = await UserCollection.updateOne(filter, updateDoc);
+
+                if (result.modifiedCount > 0) {
+                    res.send({ success: true, message: "Profile updated" });
+                } else {
+                    res.status(404).send({ success: false, message: "User not found" });
+                }
+
+            } catch (error) {
+                console.error(error);
+                res.status(500).send({ success: false, message: "Server error" });
             }
         });
 

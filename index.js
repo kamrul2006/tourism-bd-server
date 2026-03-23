@@ -138,7 +138,7 @@ async function run() {
             const query = { email: user.email }
             const exist = await UserCollection.findOne(query)
 
-            console.log(user)
+            // console.log(user)
 
             if (exist) {
                 return res.send({ massage: 'User Already exist', insertedId: null })

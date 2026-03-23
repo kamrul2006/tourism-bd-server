@@ -294,14 +294,7 @@ async function run() {
         //------   all Plans ---------
         // ----------------------------------------------------------------------------------------
 
-
-        // ---------------get all Blogs----------------
-        app.get("/plans", async (req, res) => {
-            const result = await PlansCollection.find().toArray();
-            res.send(result)
-        })
-
-        // ----------------------get blog by id -----------------------------
+        // ----------------------get plans by id -----------------------------
         app.get("/plans/:id", async (req, res) => {
             const id = req.params.id
             const query = { _id: new ObjectId(id) }
@@ -316,6 +309,34 @@ async function run() {
             const result = await PlansCollection.insertOne(review)
             res.send(result)
         })
+
+        // ------------GET by userEmail---------
+        app.get("/plans", async (req, res) => {
+            const email = req.query.email;
+
+            // console.log(email);
+
+            if (!email) {
+                return res.status(400).send({ error: "Email is required" });
+            }
+
+            const query = { userEmail: email };
+            // console.log(query);
+
+            const result = await PlansCollection
+                .find(query)
+                .sort({ createdAt: -1 })
+                .toArray();
+
+            res.send(result);
+        });
+
+        // ---------------get all plans----------------
+        app.get("/planes", async (req, res) => {
+            const result = await PlansCollection.find().toArray();
+            res.send(result)
+        })
+
 
     }
     finally {

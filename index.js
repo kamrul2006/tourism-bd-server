@@ -68,7 +68,6 @@ async function run() {
             res.send(result)
         })
 
-
         //----------add Blog------------------
         app.post('/Blogs', async (req, res) => {
             const review = req.body
@@ -239,7 +238,6 @@ async function run() {
             const result = await DestinationsCollection.find().toArray();
             res.send(result)
         })
-
 
 
         //--------------------------------------------------------------------

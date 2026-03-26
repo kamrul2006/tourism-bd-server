@@ -58,7 +58,6 @@ async function run() {
             res.send(result)
         })
 
-
         // ----------------------get blog by id -----------------------------
         app.get("/Blogs/:id", async (req, res) => {
             const id = req.params.id
@@ -308,16 +307,27 @@ async function run() {
             res.send(result)
         })
 
+        // ----------------- DELETE a Plane by id---------------
+        app.delete("/plans/:id", async (req, res) => {
+            const userId = req.params.id;
+
+            try {
+                const result = await PlansCollection.deleteOne({ _id: new ObjectId(userId) });
+                res.json(result);
+            } catch (err) {
+                res.status(500).json({ message: "Failed to delete the Plane", error: err.message });
+            }
+        });
+
+
         // ------------GET by userEmail---------
         app.get("/plans", async (req, res) => {
             const email = req.query.email;
 
             // console.log(email);
-
             if (!email) {
                 return res.status(400).send({ error: "Email is required" });
             }
-
             const query = { userEmail: email };
             // console.log(query);
 

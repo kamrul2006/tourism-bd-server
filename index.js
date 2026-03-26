@@ -231,7 +231,6 @@ async function run() {
             res.send(result)
         })
 
-
         // -----------get all Destinations---------------------------------
         app.get("/destinations", async (req, res) => {
             const result = await DestinationsCollection.find().toArray();
@@ -318,7 +317,6 @@ async function run() {
                 res.status(500).json({ message: "Failed to delete the Plane", error: err.message });
             }
         });
-
 
         // ------------GET by userEmail---------
         app.get("/plans", async (req, res) => {
